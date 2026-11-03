@@ -120,11 +120,15 @@ h2{font-family:var(--f-display);font-weight:900;font-stretch:70%;font-size:clamp
 .glist dd{margin:0;font-size:15.5px;line-height:1.5}
 .otag{display:inline-block;font-family:var(--f-display);font-weight:800;font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:1px 6px;margin-right:8px;vertical-align:2px}
 .otag.res{background:var(--resigned);color:#fff}.otag.asd{border:2px solid var(--aside);color:var(--aside)}
-.guess{padding-block:40px 56px;border-bottom:1px solid var(--rule)}
-.guess .inner{max-width:720px}
+.guess{border:3px solid var(--ink);box-shadow:10px 10px 0 var(--red);background:var(--paper,var(--surface));color:var(--ink);padding:28px 24px 26px;width:min(640px,calc(100vw - 32px));max-height:calc(100vh - 32px);overflow:auto;margin:auto}
+.guess::backdrop{background:rgba(10,10,10,.62)}
+.guess .inner{position:relative}
+.gclose{position:absolute;top:-12px;right:-6px;background:none;border:0;font-family:var(--f-display);font-weight:800;font-size:14px;text-transform:uppercase;color:var(--ink-2);cursor:pointer;padding:8px}
+.gclose:focus-visible,#gcont:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+#gcont{margin-top:8px;font-family:var(--f-display);font-weight:800;font-size:16px;text-transform:uppercase;padding:10px 20px;background:var(--red);color:#fff;border:0;cursor:pointer}
 .guess h2{font-family:var(--f-display);font-weight:900;font-stretch:75%;text-transform:uppercase;font-size:clamp(34px,5vw,52px);line-height:.95;margin:14px 0 10px}
 .guess p{font-size:18px;line-height:1.55;max-width:60ch}
-.gdots{display:grid;grid-template-columns:repeat(13,1fr);gap:6px;max-width:520px;margin:20px 0 14px}
+.gdots{display:grid;grid-template-columns:repeat(13,1fr);gap:5px;max-width:520px;margin:16px 0 12px}
 .gdots span{aspect-ratio:1;border:2px solid var(--ink);background:var(--surface);transition:background .25s,border-color .25s}
 .gdots span.on{background:var(--ink)}
 .gdots span.ans{background:var(--red);border-color:var(--red)}
@@ -198,7 +202,8 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opa
 
 
 
-<section class="guess gutter" aria-labelledby="guess-h"><div class="inner">
+<dialog class="guess" id="guessDlg" aria-labelledby="guess-h"><div class="inner">
+  <button type="button" class="gclose" id="gclose" aria-label="Skip the quiz">Skip ✕</button>
   <span class="kicker">Before you scroll</span>
   <h2 id="guess-h">Take a guess</h2>
   <p>We found 26 calls to resign where we know how things turned out. In how many did the person actually resign?</p>
@@ -206,7 +211,8 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opa
   <div class="grow"><input type="range" id="gslider" min="0" max="26" value="10" aria-label="Your guess, out of 26 calls"><output id="gval" for="gslider">10</output></div>
   <button type="button" id="gbtn">Show me</button>
   <p class="gans" id="gans" aria-live="polite"></p>
-</div></section>
+  <button type="button" id="gcont" hidden>Keep reading ↓</button>
+</div></dialog>
 
 <section class="gloss gutter" aria-labelledby="gloss-h"><div class="inner">
   <h2 id="gloss-h">Quick vocab check</h2>
@@ -1092,9 +1098,15 @@ let myGuess=null;
   sl.addEventListener("input",()=>{out.textContent=sl.value;paint(+sl.value);}); paint(+sl.value);
   btn.addEventListener("click",()=>{myGuess=+sl.value; cells.forEach((c,i)=>{c.className=i<2?"ans":"miss";});
     const diff=myGuess-2;
-    ans.textContent=(myGuess===2?"Spot on. ":diff>0?`You guessed ${myGuess}. `:`You guessed ${myGuess}. `)+"It's 2. Both calls were about the same man, Peter O'Neill, in May 2019. Keep scrolling.";
+    ans.textContent=(myGuess===2?"Spot on. ":diff>0?`You guessed ${myGuess}. `:`You guessed ${myGuess}. `)+"It's 2. Both calls were about the same man, Peter O'Neill, in May 2019.";
     const ge=document.getElementById("guess-echo"); if(ge) ge.textContent=`You guessed ${myGuess} resignation${myGuess===1?"":"s"}. The real number was 2. `;
-    btn.hidden=true;});
+    btn.hidden=true; const gc=document.getElementById("gcont"); gc.hidden=false; gc.focus();});
+  const dlg=document.getElementById("guessDlg"), close=()=>{if(dlg.open) dlg.close();};
+  document.getElementById("gclose").addEventListener("click",close);
+  document.getElementById("gcont").addEventListener("click",close);
+  dlg.addEventListener("click",e=>{if(e.target===dlg) close();});
+  let shown=false; const openQuiz=()=>{if(shown||!dlg.showModal) return; shown=true; dlg.showModal();};
+  const onS=()=>{if(scrollY>140){removeEventListener("scroll",onS);openQuiz();}}; addEventListener("scroll",onS,{passive:true});
 })();
 const steps=[...document.querySelectorAll(".step")];
 const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){steps.forEach(s=>s.classList.toggle("active",s===e.target));applyStep(e.target.dataset.step);}});},{rootMargin:matchMedia("(max-width:860px)").matches?"-84% 0px -15% 0px":"-45% 0px -45% 0px"});
