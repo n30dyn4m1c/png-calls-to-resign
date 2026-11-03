@@ -6,15 +6,15 @@ Live site: https://n30dyn4m1c.github.io/png-calls-to-resign/
 
 ## What it found
 
-- 27 calls aimed at 15 people. One person actually resigned: Prime Minister Peter O'Neill, in May 2019.
+- 27 calls aimed at 15 people. One person actually resigned: Prime Minister Peter O'Neill, who said on 26 May 2019 he would step down and formally resigned on 29 May.
 - Three ministers stepped aside for a while. Two of them were later reinstated.
-- Five more people lost their posts when the PM or a board moved them. The other 15 calls were ignored.
+- Four more people lost their posts when the PM or a board moved or sacked them. Everyone else stayed: 15 of the 26 calls with an outcome changed nothing.
 
 ## Files
 
 - `index.html`: the whole story in one page, with the data embedded
 - `data/png-resignation-calls.csv` and `data/data.json`: the dataset, with links to the news report of each call and of its outcome
-- `assets/`: two illustrations (AI-generated, credited on the page)
+- `assets/`: two illustrations (AI-generated, credited on the page, with WebP copies) and `share-card.png`, the 1200×630 social preview
 
 ### Data fields
 
