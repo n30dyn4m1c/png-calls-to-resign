@@ -9,8 +9,8 @@ Live site: https://n30dyn4m1c.github.io/png-calls-to-resign/
 ## What it found
 
 - 27 calls aimed at 15 people. One person actually resigned: Prime Minister Peter O'Neill, who said on 26 May 2019 he would step down and formally resigned on 29 May.
-- Three ministers stepped aside for a while. Two of them were later reinstated.
-- Four more people lost their posts when the PM or a board moved or sacked them. Everyone else stayed: 15 of the 26 calls with an outcome changed nothing.
+- Four people stepped aside for a while: three ministers and the UPNG chancellor. Two of the ministers were later reinstated.
+- Four more people lost their posts when the PM or a board moved or sacked them. Everyone else stayed: 15 of the 27 calls changed nothing.
 
 ## Files
 

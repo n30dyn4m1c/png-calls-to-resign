@@ -430,14 +430,14 @@
   "targetType": "SOE or statutory head",
   "reason": "Vice-Chancellor Ian Findlay resigned, citing bullying and threats to his safety.",
   "reasonType": "Politics or performance",
-  "outcome": "pending",
-  "outcomeText": "Too early to tell. The call is one day old.",
+  "outcome": "aside",
+  "outcomeText": "Stepped aside on 3 November 2026, a day after the call, as the UPNG Council moved to address the leadership crisis.",
   "src": "https://emtv.com.pg/pm-marape-calls-on-upng-chancellor-sir-robert-igara-to-resign-following-professor-ian-findlays-departure/",
   "srcName": "EMTV",
-  "osrc": "",
-  "osrcName": "",
-  "outcomeDate": "",
-  "daysToOutcome": ""
+  "osrc": "https://www.postcourier.com.pg/upng-chancellor-steps-aside-as-council-moves-to-address-leadership-crisis/",
+  "osrcName": "Post-Courier",
+  "outcomeDate": "2026-11-03",
+  "daysToOutcome": 1
  },
  {
   "id": 23,
