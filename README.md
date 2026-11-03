@@ -22,6 +22,8 @@ Live site: https://n30dyn4m1c.github.io/png-calls-to-resign/
 
 `date`, `caller`, `callerRole`, `callerType` (Prime Minister, Government MP, Opposition MP, Civil society), `target`, `targetRole`, `targetType` (Prime Minister, Minister, MP, Public servant, SOE or statutory head), `reason`, `reasonType` (Personal conduct, Politics or performance), `outcome` (resigned, aside, moved, stayed, pending), `outcomeText`, `src`/`srcName` (report of the call), `osrc`/`osrcName` (report of the outcome), `outcomeDate`, `daysToOutcome`.
 
+Two rows (ids 1 and 23) are marked `resigned`. Both are calls on Peter O'Neill in May 2019 and both refer to his one resignation on 29 May 2019, so count people, not rows, when counting resignations.
+
 ## Method and caveats
 
 - A call is a named public figure or organisation publicly asking a named office-holder to resign, step down, step aside, be sacked or have their appointment revoked.
