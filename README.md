@@ -1,5 +1,7 @@
 # Told to Quit. Almost No One Does.
 
+By Neo Malesa.
+
 **Do public calls to resign actually work in Papua New Guinea?** A scrollytelling data story tracing 27 public calls, made between 2019 and 2026, for a PNG politician, public servant or state company head to resign, step down or step aside, and what happened after each one.
 
 Live site: https://n30dyn4m1c.github.io/png-calls-to-resign/
@@ -28,4 +30,4 @@ Live site: https://n30dyn4m1c.github.io/png-calls-to-resign/
 
 ## Corrections
 
-Missing a call, or spotted an error? [Open an issue](https://github.com/n30dyn4m1c/png-calls-to-resign/issues/new) with a link to the news report.
+Missing a call, or spotted an error? Email nmalesa@upng.ac.pg, or [open an issue](https://github.com/n30dyn4m1c/png-calls-to-resign/issues/new) with a link to the news report.
