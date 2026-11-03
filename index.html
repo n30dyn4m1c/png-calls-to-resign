@@ -318,13 +318,6 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opa
       <p>Chuave MP James Nomane made seven of the calls, first as a government MP who quit after the riots and later as Opposition Leader.</p>
       <p>Two of his targets lost their posts. Both times, the PM moved them.</p>
     </div></section>
-    <section class="step" data-step="bench"><div class="card">
-      <div class="date">Elsewhere</div>
-      <h3>How does PNG compare?</h3>
-      <div class="big">8%</div>
-      <p>Count only real resignations and 2 of the 26 calls worked, both about O'Neill. In Germany, researchers counted 111 public fights over a minister's future between 1969 and 2005. Fourteen ended in a resignation, about 13%.</p>
-      <p>In Britain, about half the ministers who faced a call between 1945 and 1997 eventually left, though it took almost two years on average. Nobody keeps a global average, because every study counts calls a little differently.</p>
-    </div></section>
     <section class="step" data-step="pending"><div class="card">
       <div class="date">2 November 2026</div>
       <h3>The newest one is a day old</h3>
@@ -378,7 +371,6 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opa
       <li>Callers are grouped as Prime Minister, government MP, Opposition MP (by their side at the time of the call; governors count as MPs) or civil society (professional bodies and associations). Reasons are grouped as personal conduct (the person's own alleged words or actions) or politics or performance (leadership, crime, budgets, management). Targets are grouped as Prime Minister, Minister, MP, public servant (police commissioner, department heads) or SOE or statutory head (state company bosses, university chancellor).</li>
       <li>"Resigned" means the person gave up the office for good. "Stepped aside" means a temporary handover of the job, which can be reversed; we count it separately. "Removed" means the person did not quit but lost the post when the PM, Cabinet or a board sacked or reshuffled them.</li>
       <li>Departure dates are the day the person stepped aside, resigned or was replaced. "Days to exit" counts from the call to that date.</li>
-      <li>Comparisons: Germany from Fischer, Kaiser and Rohlfing, "The Push and Pull of Ministerial Resignations in Germany, 1969 to 2005" (West European Politics, 2006). UK from Berlinski, Dewan and Dowding, "Individual and Collective Performance and the Tenure of British Ministers 1945 to 1997", which records 225 resignation calls against 158 ministers; the share who eventually left is our calculation from its figures. These studies define a call more broadly than we do, so the comparison is a rough guide.</li>
       <li>Allegations are described as they were reported at the time. Being told to resign is not proof of wrongdoing. Lohia Boe Samuel was acquitted of murder in 2023, Jimmy Maladina's charges were dropped in 2025, and Wapu Sonk denies the allegations against him. In our searches we found no conviction of anyone named here over the matters behind these calls, though we did not check every court record.</li>
       <li>A step-aside, sacking or reshuffle that followed a call may have had other causes. We record the sequence, not the cause.</li>
       <li>This is not a complete record. Many calls in print and on radio never reach online archives, so treat counts as a floor. Outcomes for David Manning (2026) and Rainbo Paita rest on finding no report that they left.</li>
@@ -993,7 +985,6 @@ const plot=document.getElementById("plot"), counter=document.getElementById("cou
 document.getElementById("legend").innerHTML=ORDER.map(k=>`<span>${legendSvg(k)}${OUT[k].short}</span>`).join("");
 const STEPS={
   all:{hl:()=>true,color:()=>true,count:"<b>27</b>calls to resign"},
-  bench:{layer:"bench",hl:()=>true,color:()=>true,count:"<b>8%</b>of PNG calls ended in a resignation",sr:"Chart: share of calls ending in resignation or exit. PNG, resigned: 8 percent. PNG, resigned or stepped aside: 23 percent. PNG, any exit: 42 percent. Germany ministers 1969 to 2005, resigned: 13 percent. UK ministers 1945 to 1997, eventually left: about 52 percent."},
   who:{layer:"types",hl:()=>true,color:()=>true,count:"<b>8 / 11</b>calls on ministers ended in an exit",sr:"Chart: calls grouped by who was told to quit. Prime Minister: 8 calls, 2 ended in an exit. Ministers: 11 calls, 8 exits, 4 stepped aside and 4 removed. MPs: 2 calls, none. Public servants: 3 calls, none. SOE and statutory heads: 3 calls, 1 exit, 1 pending."},
   pace:{layer:"years",hl:()=>true,color:()=>true,count:"<b>27</b>calls, by year"},
   oneill:{hl:d=>d.id===1||d.id===23,color:d=>d.id===1||d.id===23,count:"<b>1</b>resignation in seven years"},
@@ -1048,21 +1039,9 @@ function yearsSvg(W,H){
   const xr=4+5*colW+colW/2, n24=DATA.filter(d=>d.date.startsWith("2024")).length; s+=`<text class="ann" x="${xr}" y="${H-B-Math.max(...yrs.map(y=>DATA.filter(d=>+d.date.slice(0,4)===y).length))*step-34}" text-anchor="middle">Riots, Jan 2024 ↓</text>`;
   return s+"</svg>";
 }
-function benchSvg(W,H){
-  const rows=[["PNG: resigned","2 of 26 calls",8,true],["PNG: resigned or stepped aside","6 of 26 calls",23,true],["PNG: any exit","11 of 26 calls",42,true],["Germany: minister resigned","14 of 111 debates, 1969 to 2005",13,false],["UK: minister eventually left","158 ministers, 1945 to 1997",52,false]];
-  const narrow=W<560, L=narrow?130:230, R=56, T=34, rowH=Math.min(58,(H-T-30)/rows.length), x=v=>L+v/100*(W-L-R);
-  let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Share of calls ending in resignation, PNG compared with Germany and the UK">`;
-  [0,25,50,75,100].forEach(v=>{s+=`<line x1="${x(v)}" x2="${x(v)}" y1="${T-8}" y2="${T+rows.length*rowH}" stroke="var(--grid)"/><text class="tick" x="${x(v)}" y="${T-14}" text-anchor="middle">${v}%</text>`;});
-  rows.forEach(([l,sub,v,png],i)=>{const cy=T+i*rowH+rowH/2, h=Math.max(10,Math.min(18,rowH*.4));
-    if(i===3) s+=`<line x1="0" x2="${W-R}" y1="${cy-rowH/2}" y2="${cy-rowH/2}" stroke="var(--ink)"/>`;
-    s+=`<text class="bar-label" x="0" y="${cy-1}">${esc(narrow?l.replace(" or stepped aside"," or aside"):l)}</text><text class="lane-role" x="0" y="${cy+12}">${esc(narrow?sub.split(",")[0]:sub)}</text>`;
-    s+=`<rect x="${x(0)}" y="${cy-h/2}" width="${x(v)-x(0)}" height="${h}" fill="${png?"var(--red)":"var(--ink-3)"}"/>`;
-    s+=`<text class="bar-val" x="${x(v)+8}" y="${cy+4}">${i===4?"~":""}${v}%</text>`;});
-  return s+"</svg>";
-}
 function drawStory(){
   const W=Math.max(300,plot.clientWidth), H=Math.max(260,plot.clientHeight);
-  plot.innerHTML=`<div class="layer" id="tl">${timeline(W,H,{mark:(d,x,y,ms)=>`<g class="mk" data-id="${d.id}" data-x="${x}" data-y="${y}" transform="translate(${x},${y})">${glyph(d.outcome,ms)}</g>`})}</div><div class="layer" id="bars" data-off="1">${barsSvg(W,H)}</div><div class="layer" id="types" data-off="1">${typesSvg(W,H)}</div><div class="layer" id="reasons" data-off="1">${typesSvg(W,H,"reasonType",RTYPES,{},"Calls by reason, and how many left")}</div><div class="layer" id="bench" data-off="1">${benchSvg(W,H)}</div><div class="layer" id="callers" data-off="1">${typesSvg(W,H,"callerType",CTYPES,CLAB,"Calls by who made them, and how many worked")}</div><div class="layer" id="years" data-off="1">${yearsSvg(W,H)}</div>`;
+  plot.innerHTML=`<div class="layer" id="tl">${timeline(W,H,{mark:(d,x,y,ms)=>`<g class="mk" data-id="${d.id}" data-x="${x}" data-y="${y}" transform="translate(${x},${y})">${glyph(d.outcome,ms)}</g>`})}</div><div class="layer" id="bars" data-off="1">${barsSvg(W,H)}</div><div class="layer" id="types" data-off="1">${typesSvg(W,H)}</div><div class="layer" id="reasons" data-off="1">${typesSvg(W,H,"reasonType",RTYPES,{},"Calls by reason, and how many left")}</div><div class="layer" id="callers" data-off="1">${typesSvg(W,H,"callerType",CTYPES,CLAB,"Calls by who made them, and how many worked")}</div><div class="layer" id="years" data-off="1">${yearsSvg(W,H)}</div>`;
   const svg=plot.querySelector("#tl svg");
   svg.insertAdjacentHTML("beforeend",`<g id="anns"></g>`);
   if(!introDone && !matchMedia("(prefers-reduced-motion: reduce)").matches){
@@ -1074,7 +1053,7 @@ function drawStory(){
 }
 function applyStep(name){
   current=name; const st=STEPS[name]; counter.innerHTML=st.count;
-  const lay=st.layer||"tl"; ["tl","bars","types","years","reasons","callers","bench"].forEach(k=>{const el=plot.querySelector("#"+k); if(el) el.dataset.off=k===lay?"":"1";});
+  const lay=st.layer||"tl"; ["tl","bars","types","years","reasons","callers"].forEach(k=>{const el=plot.querySelector("#"+k); if(el) el.dataset.off=k===lay?"":"1";});
   const anns=plot.querySelector("#anns");
   if(anns){const W=plot.clientWidth; anns.innerHTML=(st.ann||[]).map(([id,t])=>{const m=plot.querySelector(`.mk[data-id="${id}"]`); if(!m) return ""; const x=+m.dataset.x, y=+m.dataset.y, left=x>W*.62;
     return `<line class="ann-line" x1="${x}" y1="${y-9}" x2="${x}" y2="${y-20}"/><text class="ann" x="${left?x+4:x-4}" y="${y-24}" text-anchor="${left?"end":"start"}">${esc(t)}</text>`;}).join("");}

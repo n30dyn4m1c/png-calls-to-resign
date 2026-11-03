@@ -9,7 +9,6 @@ Live site: https://n30dyn4m1c.github.io/png-calls-to-resign/
 - 27 calls aimed at 15 people. One person actually resigned: Prime Minister Peter O'Neill, in May 2019.
 - Three ministers stepped aside for a while. Two of them were later reinstated.
 - Five more people lost their posts when the PM or a board moved them. The other 15 calls were ignored.
-- Counting only real resignations, 8% of PNG calls worked. A German study of ministers from 1969 to 2005 found 13%.
 
 ## Files
 
