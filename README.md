@@ -1,21 +1,22 @@
 # Told to Quit. Almost No One Does.
 
+By Neo Malesa.
+
 **Do public calls to resign actually work in Papua New Guinea?** A scrollytelling data story tracing 27 public calls, made between 2019 and 2026, for a PNG politician, public servant or state company head to resign, step down or step aside, and what happened after each one.
 
 Live site: https://n30dyn4m1c.github.io/png-calls-to-resign/
 
 ## What it found
 
-- 27 calls aimed at 15 people. One person actually resigned: Prime Minister Peter O'Neill, in May 2019.
-- Three ministers stepped aside for a while. Two of them were later reinstated.
-- Five more people lost their posts when the PM or a board moved them. The other 15 calls were ignored.
-- Counting only real resignations, 8% of PNG calls worked. A German study of ministers from 1969 to 2005 found 13%.
+- 27 calls aimed at 15 people. One person actually resigned: Prime Minister Peter O'Neill, who said on 26 May 2019 he would step down and formally resigned on 29 May.
+- Four people stepped aside for a while: three ministers and the UPNG chancellor. Two of the ministers were later reinstated.
+- Four more people lost their posts when the PM or a board moved or sacked them. Everyone else stayed: 15 of the 27 calls changed nothing.
 
 ## Files
 
 - `index.html`: the whole story in one page, with the data embedded
 - `data/png-resignation-calls.csv` and `data/data.json`: the dataset, with links to the news report of each call and of its outcome
-- `assets/`: two illustrations (AI-generated, credited on the page)
+- `assets/`: two illustrations (AI-generated, credited on the page, with WebP copies) and `share-card.png`, the 1200×630 social preview
 
 ### Data fields
 
@@ -29,4 +30,4 @@ Live site: https://n30dyn4m1c.github.io/png-calls-to-resign/
 
 ## Corrections
 
-Missing a call, or spotted an error? [Open an issue](https://github.com/n30dyn4m1c/png-calls-to-resign/issues/new) with a link to the news report.
+Missing a call, or spotted an error? Email nmalesa@upng.ac.pg, or [open an issue](https://github.com/n30dyn4m1c/png-calls-to-resign/issues/new) with a link to the news report.
