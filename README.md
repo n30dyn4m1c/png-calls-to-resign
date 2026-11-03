@@ -1,4 +1,4 @@
-# Told to quit. Almost no one does.
+# Told to Quit. Almost No One Does.
 
 **Do public calls to resign actually work in Papua New Guinea?** A scrollytelling data story tracing 27 public calls, made between 2019 and 2026, for a PNG politician, public servant or state company head to resign, step down or step aside, and what happened after each one.
 
